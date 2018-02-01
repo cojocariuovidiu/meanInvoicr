@@ -1,0 +1,21 @@
+<h2 class="sub-header">Customers</h2>
+<div class="table-responsive">
+   <table class="table table-striped">
+      <thead>
+         <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Email</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr ng-reapeat="customer in customers">
+            <td>{{customer._id}}</td>
+            <td>{{customer.first_name}} {{customer.last_name}}</td>
+            <td>{{customer.company}}</td>
+            <td>{{customer.email}}</td>
+         </tr>
+      </tbody>
+   </table>
+</div>

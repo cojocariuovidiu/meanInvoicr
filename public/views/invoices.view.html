@@ -1,0 +1,35 @@
+<h2 class="sub-header">Invoices</h2>
+<div class="table-responsive" ng-init="getInvoices()">
+   <table class="table table-striped">
+      <thead>
+         <tr>
+            <th>#</th>
+            <th>Customer</th>
+            <th>Service</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr ng-repeat="invoice in invoices">
+            <td>{{invoice._id}}</td>
+            <td>{{invoice.customer.first_name}} {{invoice.customer.last_name}}</td>
+            <td>{{invoice.service}}</td>
+            <td>{{invoice.price}}</td>
+            <td>{{invoice.status}}</td>
+            <td>
+               <a href="#/invoices/details/{{invoice._id}}" class="btn btn-default">
+                  <span class="glyphicon glyphicon-link"></span>
+               </a>
+               <a href="#/invoices/details/{{invoice._id}}/edit" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-pencil"></span>
+               </a>
+               <a ng-click="deleteInvoice(invoice)" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash"></span>
+               </a>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>

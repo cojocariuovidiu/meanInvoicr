@@ -1,5 +1,5 @@
 <h2 class="sub-header">Customers</h2>
-<div class="table-responsive">
+<div class="table-responsive" ng-init="getCustomers()">
    <table class="table table-striped">
       <thead>
          <tr>
@@ -7,14 +7,26 @@
             <th>Name</th>
             <th>Company</th>
             <th>Email</th>
+            <th>Actions</th>
          </tr>
       </thead>
       <tbody>
-         <tr ng-reapeat="customer in customers">
+         <tr ng-repeat="customer in customers">
             <td>{{customer._id}}</td>
             <td>{{customer.first_name}} {{customer.last_name}}</td>
             <td>{{customer.company}}</td>
             <td>{{customer.email}}</td>
+            <td>
+               <a href="#/customers/details/{{customer._id}}" class="btn btn-default">
+                  <span class="glyphicon glyphicon-link"></span>
+               </a>
+               <a href="#/customers/details/{{customer._id}}/edit" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-pencil"></span>
+               </a>
+               <a ng-click="deleteCustomer(customer)" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash"></span>
+               </a>
+            </td>
          </tr>
       </tbody>
    </table>

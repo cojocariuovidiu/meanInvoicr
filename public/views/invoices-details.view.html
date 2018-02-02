@@ -1,0 +1,36 @@
+<div ng-init="getInvoice()">
+   <div class="row">
+      <div class="col-md-8">
+         <h3>{{invoice.customer.first_name}} {{invoice.customer.last_name}},
+            {{invoice.customer.company}}</h3>
+         <ul class="list-group">
+            <li class="list-group-item"><strong>Street</strong>:
+            {{invoice.customer.address.street}}</li>
+            <li class="list-group-item"><strong>City</strong>:
+            {{invoice.customer.address.city}}</li>
+            <li class="list-group-item"><strong>State</strong>:
+            {{invoice.customer.address.state}}</li>
+            <li class="list-group-item"><strong>Zip</strong>: {{invoice.customer.address.zip}}</li>
+         </ul>
+      </div>
+      <div class="col-md-4">
+         <p>Invoice Date: {{invoice.createdAt}}</p>
+         <h3>Status: {{invoice.status}}</h3>
+      </div>
+   </div>
+   <div class="row">
+      <h2 class="sub-header">Invoice # {{invoice._id}}</h2>
+      <br>
+      <div class="col-md-12">
+         <ul class="list-group">
+            <li class="list-group-item"><strong>Service</strong>:
+            {{invoice.service}}</li>
+            <li class="list-group-item"><strong>Amount</strong>:
+            {{invoice.price}}</li>
+            <li class="list-group-item"><strong>Due Date</strong>:
+            {{invoice.due}}</li>
+         </ul>
+      </div>
+
+   </div>
+</div>

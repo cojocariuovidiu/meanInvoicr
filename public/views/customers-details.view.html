@@ -1,0 +1,53 @@
+<div class="row" ng-init="getCustomer()">
+   <h2 class="sub-header" style="display: inline-block;">Customer: {{customer.first_name}} {{customer.last_name}}</h2>
+   <img class="img-responsive pull-right" style="margin: 0 auto; width: 30%;" ng-src="{{customer.logo_url}}">
+   <br>
+   <br>
+   <div class="col-md-12">
+      <ul class="list-group">
+         <li class="list-group-item"><strong>Company</strong>: {{customer.company}}</li>
+         <li class="list-group-item"><strong>Email</strong>: {{customer.email}}</li>
+         <li class="list-group-item"><strong>Phone</strong>: {{customer.phone}}</li>
+         <li class="list-group-item"><strong>Street</strong>: {{customer.address.street}},
+         {{customer.address.city}}, {{customer.address.state}}, {{customer.address.zip}}</li>
+      </ul>
+   </div>
+
+</div><!-- end .row -->
+
+<div class="row">
+   <h3 class="sub-header">Customer Invoices:</h3>
+
+   <div class="table-responsive" ng-init="getCustomerInvoices()">
+      <table class="table table-striped">
+         <thead>
+            <tr>
+               <th>#</th>
+               <th>Service</th>
+               <th>Price</th>
+               <th>Status</th>
+               <th>Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="invoice in invoices">
+               <td>{{invoice._id}}</td>
+               <td>{{invoice.service}}</td>
+               <td>{{invoice.price}}</td>
+               <td>{{invoice.status}}</td>
+               <td>
+                  <a href="#/invoices/details/{{invoice._id}}" class="btn btn-default">
+                     <span class="glyphicon glyphicon-link"></span>
+                  </a>
+                  <a href="#/invoices/details/{{invoice._id}}/edit" class="btn btn-primary">
+                     <span class="glyphicon glyphicon-pencil"></span>
+                  </a>
+                  <a ng-click="deleteInvoice(invoice)" class="btn btn-danger">
+                     <span class="glyphicon glyphicon-trash"></span>
+                  </a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div><!-- end .table -->
+</div>

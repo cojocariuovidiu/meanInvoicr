@@ -1,3 +1,5 @@
-angular.module('invoicr').controller('DashboardCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
-   console.log('DashboardCtrl initialized...');
+angular.module('invoicr').controller('DashboardCtrl', ['$scope', '$rootScope', '$http', '$location', function($scope, $rootScope, $http, $location) {
+   $rootScope.isActive = function(route) {
+      return $location.path().indexOf(route) > -1;
+   };
 }]);

@@ -1,4 +1,13 @@
 <h2 class="sub-header">Customers</h2>
+<form class="form-inline">
+   <div class="form-group">
+      Search
+      <input type="text" name="searchText" id="searchText" ng-model="searchText" placeholder="Filter customers" class="form-control"/>
+   </div>
+</form>
+<br>
+<br>
+ 
 <div class="table-responsive" ng-init="getCustomers()">
    <table class="table table-striped">
       <thead>
@@ -11,7 +20,7 @@
          </tr>
       </thead>
       <tbody>
-         <tr ng-repeat="customer in customers">
+         <tr ng-repeat="customer in customers | filter: searchText">
             <td>{{customer._id}}</td>
             <td>{{customer.first_name}} {{customer.last_name}}</td>
             <td>{{customer.company}}</td>

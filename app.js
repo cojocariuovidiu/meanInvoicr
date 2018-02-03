@@ -6,8 +6,30 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/invoicr');
-var db = mongoose.connection;
+var mongoUri = 'mongodb://localhost/invoicr';
+var seed = true;
+
+// Clean db
+mongoose.connect(mongoUri, {}, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    // Clean database
+    var db = mongoose.connection.db.dropDatabase(function(err) {
+      if (err) {
+        console.log('Connected to ' + mongoUri);
+      } else {
+        console.log('Cleaned: ' + mongoUri);
+      }
+
+      // Seed database
+      if (seed) { require('./seed.js'); }
+
+    });
+
+  }
+});
+
 
 var customers = require('./routes/customers');
 var invoices = require('./routes/invoices');

@@ -68,4 +68,32 @@ angular.module('invoicr').controller('CustomersCtrl', ['$scope', '$rootScope', '
       });
    };
 
+   // Filter by city
+   $scope.filterOptions = {
+      cities: [
+         { name: 'Show all' },
+         { name: '' },
+         { name: 'Tierra' },
+         { name: 'Galaxia' },
+         { name: 'Capsule' },
+      ]
+   };
+
+   // Selected filter
+   $scope.filterItem = {
+      city: $scope.filterOptions.cities[0]
+   };
+
+   // Custom Filter
+   $scope.filterByCity = function(customer) {
+      if (customer.address.city === $scope.filterItem.city.name) {
+         return true;
+      } else if ($scope.filterItem.city.name == 'Show all') {
+         return true;
+      }
+      else {
+         return false;
+      }
+   };
+
 }]);
